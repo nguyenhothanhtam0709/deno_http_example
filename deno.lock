@@ -1,0 +1,24 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "npm:@types/node": "npm:@types/node@18.16.19"
+    },
+    "npm": {
+      "@types/node@18.16.19": {
+        "integrity": "sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==",
+        "dependencies": {}
+      }
+    }
+  },
+  "remote": {
+    "https://esm.sh/drizzle-orm@0.28.6/postgres-js": "218e472d549194e9f592f63a0a4186ade0628fe621a6bbc2466ab1c87cdf7929",
+    "https://esm.sh/v133/drizzle-orm@0.28.6/denonext/postgres-js.js": "7f968d0769dea94a71faa306984cb0c800cf0584c159b50cc6caf7684f0f2aaf",
+    "https://esm.sh/v133/inversify@6.0.1": "5e09930d7e06c332c83b84ec0fceb7c9cc78228a4e8aa2ffa834c89c922e24e3",
+    "https://esm.sh/v133/inversify@6.0.1/denonext/inversify.mjs": "a92fe485c4c240d0c0c216d5bc333ff7b44c22f9521a243cd22f65d917d0540f",
+    "https://esm.sh/v133/postgres@3.3.5": "d3a9649482c2e2b5da0982958aa28bd08ca1c4424bf9ba8428fe5f99aba4ebe7",
+    "https://esm.sh/v133/postgres@3.3.5/denonext/postgres.mjs": "f4ff30e4174b923425167ae7eb64486d61b0ebce199f43b89631116a280aec3b",
+    "https://esm.sh/v133/reflect-metadata@0.1.13": "c61bf3df64b3f216d3803ce89310a321ba1fd0faff90e50ad409740f6ef21d2a",
+    "https://esm.sh/v133/reflect-metadata@0.1.13/denonext/reflect-metadata.mjs": "966ba96ac64a43fcbd49a3083fc7a21c4b49839d8b6645ffab02be209fa67d93"
+  }
+}
