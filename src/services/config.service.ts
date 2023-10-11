@@ -1,14 +1,14 @@
 /// <reference lib="deno.ns" />
 
-import { injectable } from "inversify";
-import { AbstractBaseService } from "./_base.service.ts";
-import { loadSync } from "dotenv/mod.ts";
+import { AbstractBaseService } from './_base.service.ts';
+import { injectable } from 'inversify';
+import { loadSync } from 'dotenv/mod.ts';
 
 type EnvConfig = {
 	DATABASE_URL: string;
 };
 
-export const ConfigServiceToken = Symbol("ConfigService");
+export const ConfigServiceToken = Symbol('ConfigService');
 
 @injectable()
 export class ConfigService extends AbstractBaseService {
@@ -25,7 +25,7 @@ export class ConfigService extends AbstractBaseService {
 		const env = loadSync();
 
 		return Object.freeze({
-			DATABASE_URL: env.DATABASE_URL || "",
+			DATABASE_URL: env.DATABASE_URL || '',
 		});
 	}
 

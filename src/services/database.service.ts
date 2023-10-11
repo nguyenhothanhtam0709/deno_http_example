@@ -1,12 +1,12 @@
 /// <reference lib="deno.ns" />
 
-import { drizzle, type PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
-import { inject, injectable } from "inversify";
-import { type ConfigService, ConfigServiceToken } from "./config.service.ts";
-import { AbstractBaseService } from "./_base.service.ts";
+import { drizzle, type PostgresJsDatabase } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
+import { inject, injectable } from 'inversify';
+import { type ConfigService, ConfigServiceToken } from './config.service.ts';
+import { AbstractBaseService } from './_base.service.ts';
 
-export const DatabaseServiceToken = Symbol("DatabaseService");
+export const DatabaseServiceToken = Symbol('DatabaseService');
 
 @injectable()
 export class DatabaseService extends AbstractBaseService {
@@ -18,7 +18,7 @@ export class DatabaseService extends AbstractBaseService {
 	) {
 		super();
 
-		const queryClient = postgres(this.configService.get("DATABASE_URL"));
+		const queryClient = postgres(this.configService.get('DATABASE_URL'));
 		this.client = drizzle(queryClient);
 	}
 

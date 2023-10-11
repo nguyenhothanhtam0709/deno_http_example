@@ -1,6 +1,6 @@
-import type { Type } from "../commons/types/mode.ts";
-import type { AbstractBaseController } from "../controllers/_base.controller.ts";
-import type { InjectScope } from "./enum.ts";
+import type { AbstractBaseController } from '../controllers/_base.controller.ts';
+import type { InjectScope } from './enum.ts';
+import type { Type } from '../commons/types/mode.ts';
 
 type Newable<T> = new (...args: never[]) => T;
 interface Abstract<T> {

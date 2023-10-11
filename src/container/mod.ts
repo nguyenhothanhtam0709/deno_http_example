@@ -1,13 +1,14 @@
 /// <reference lib="deno.ns" />
 
-import { Container } from "inversify";
 import type {
 	ControllerProvider,
 	DIContainerParams,
 	Provider,
 	ServiceIdentifier,
-} from "./types.ts";
-import { InjectScope } from "./enum.ts";
+} from './types.ts';
+
+import { Container } from 'inversify';
+import { InjectScope } from './enum.ts';
 
 export class DIContainer {
 	public readonly container: Container;
