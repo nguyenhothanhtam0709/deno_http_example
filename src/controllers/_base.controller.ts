@@ -1,10 +1,19 @@
+import { Hono } from 'hono/mod.ts';
 import { injectable } from 'inversify';
+
+type AbstractBaseControllerParams = {
+	path: string;
+};
 
 @injectable()
 export abstract class AbstractBaseController {
 	public readonly path: string;
+	public readonly route: Hono;
 
-	constructor(path: string) {
+	constructor({ path }: AbstractBaseControllerParams) {
 		this.path = path;
+		this.route = new Hono();
 	}
+
+	abstract mapRoute(): void;
 }

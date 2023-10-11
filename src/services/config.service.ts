@@ -6,6 +6,7 @@ import { loadSync } from 'dotenv/mod.ts';
 
 type EnvConfig = {
 	DATABASE_URL: string;
+	API_PORT: number;
 };
 
 export const ConfigServiceToken = Symbol('ConfigService');
@@ -25,7 +26,8 @@ export class ConfigService extends AbstractBaseService {
 		const env = loadSync();
 
 		return Object.freeze({
-			DATABASE_URL: env.DATABASE_URL || '',
+			DATABASE_URL: env.DATABASE_URL ?? '',
+			API_PORT: parseInt(env.API_PORT || '3000'),
 		});
 	}
 

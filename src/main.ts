@@ -2,22 +2,11 @@
 
 import 'reflect-metadata';
 
-import {
-	DatabaseService,
-	DatabaseServiceToken,
-} from './services/database.service.ts';
-
-import { DIContainer } from './container/mod.ts';
-import { controllers } from './controllers/mod.ts';
-import { providers } from './services/mod.ts';
+import { HttpApplication } from './server.ts';
 
 function main() {
-	const container = new DIContainer({
-		providers,
-		controllers,
-	});
-	const dbService = container.get<DatabaseService>(DatabaseServiceToken);
-	console.log(dbService.db);
+	const httpApp = new HttpApplication();
+	httpApp.listen();
 }
 
 if (import.meta.main) {

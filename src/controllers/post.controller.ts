@@ -13,6 +13,10 @@ export class PostController extends AbstractBaseController {
 		@inject(DatabaseServiceToken)
 		private readonly databaseService: DatabaseService
 	) {
-		super('/post');
+		super({ path: '/posts' });
+	}
+
+	public mapRoute(): void {
+		this.route.get('/', (c) => c.text('Hello Posts!'));
 	}
 }

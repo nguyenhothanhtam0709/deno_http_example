@@ -4,6 +4,7 @@
 		"drizzle-orm/": "https://esm.sh/v133/drizzle-orm@0.28.6/",
 		"inversify": "https://esm.sh/v133/inversify@6.0.1",
 		"reflect-metadata": "https://esm.sh/v133/reflect-metadata@0.1.13",
-		"dotenv/": "https://deno.land/std@0.203.0/dotenv/"
+		"dotenv/": "https://deno.land/std@0.203.0/dotenv/",
+		"hono/": "https://deno.land/x/hono@v3.7.5/"
 	}
 }
