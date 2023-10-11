@@ -1,4 +1,5 @@
 import type { Type } from "../commons/types/mode.ts";
+import type { AbstractBaseController } from "../controllers/_base.controller.ts";
 import type { InjectScope } from "./enum.ts";
 
 type Newable<T> = new (...args: never[]) => T;
@@ -23,6 +24,11 @@ export type ClassProvider<T = any> = {
 // deno-lint-ignore no-explicit-any
 export type Provider<T = any> = ClassProvider<T>;
 
+export type ControllerProvider<
+	T extends AbstractBaseController = AbstractBaseController
+> = ClassProvider<T>;
+
 export type DIContainerParams = {
-	providers: Array<Provider>;
+	providers?: Array<Provider>;
+	controllers?: Array<ControllerProvider>;
 };

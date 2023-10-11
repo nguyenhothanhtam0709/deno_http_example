@@ -7,13 +7,15 @@ import {
 	DatabaseServiceToken,
 } from "./services/database.service.ts";
 import { providers } from "./services/mod.ts";
+import { controllers } from "./controllers/mod.ts";
 
 function main() {
 	const container = new DIContainer({
 		providers,
+		controllers,
 	});
-	const service = container.get<DatabaseService>(DatabaseServiceToken);
-	console.log(service.abc());
+	const dbService = container.get<DatabaseService>(DatabaseServiceToken);
+	console.log(dbService.db);
 }
 
 if (import.meta.main) {

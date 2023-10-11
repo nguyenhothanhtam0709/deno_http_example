@@ -1,17 +1,7 @@
 {
   "version": "3",
-  "packages": {
-    "specifiers": {
-      "npm:@types/node": "npm:@types/node@18.16.19"
-    },
-    "npm": {
-      "@types/node@18.16.19": {
-        "integrity": "sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==",
-        "dependencies": {}
-      }
-    }
-  },
   "remote": {
+    "https://deno.land/std@0.203.0/dotenv/mod.ts": "1da8c6d0e7f7d8a5c2b19400b763bc11739df24acec235dda7ea2cfd3d300057",
     "https://esm.sh/drizzle-orm@0.28.6/postgres-js": "218e472d549194e9f592f63a0a4186ade0628fe621a6bbc2466ab1c87cdf7929",
     "https://esm.sh/v133/drizzle-orm@0.28.6/denonext/postgres-js.js": "7f968d0769dea94a71faa306984cb0c800cf0584c159b50cc6caf7684f0f2aaf",
     "https://esm.sh/v133/inversify@6.0.1": "5e09930d7e06c332c83b84ec0fceb7c9cc78228a4e8aa2ffa834c89c922e24e3",

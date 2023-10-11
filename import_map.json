@@ -1,7 +1,6 @@
 {
 	"imports": {
-		"postgresjs": "https://esm.sh/v133/postgres@3.3.5",
-		"postgresjs/": "https://esm.sh/v133/postgres@3.3.5/",
+		"postgres": "https://esm.sh/v133/postgres@3.3.5",
 		"drizzle-orm/": "https://esm.sh/drizzle-orm@0.28.6/",
 		"inversify": "https://esm.sh/v133/inversify@6.0.1",
 		"reflect-metadata": "https://esm.sh/v133/reflect-metadata@0.1.13",

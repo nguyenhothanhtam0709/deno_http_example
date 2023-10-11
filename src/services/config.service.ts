@@ -2,6 +2,7 @@
 
 import { injectable } from "inversify";
 import { AbstractBaseService } from "./_base.service.ts";
+import { loadSync } from "dotenv/mod.ts";
 
 type EnvConfig = {
 	DATABASE_URL: string;
@@ -20,8 +21,11 @@ export class ConfigService extends AbstractBaseService {
 	}
 
 	private loadEnv(): EnvConfig {
+		// load .env
+		const env = loadSync();
+
 		return Object.freeze({
-			DATABASE_URL: Deno.env.get("DATABASE_URL") || "",
+			DATABASE_URL: env.DATABASE_URL || "",
 		});
 	}
 

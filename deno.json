@@ -1,7 +1,7 @@
 {
 	"importMap": "./import_map.json",
 	"tasks": {
-		"dev": "deno run --allow-env --watch src/main.ts"
+		"dev": "deno run --allow-env --allow-read --allow-net --watch src/main.ts"
 	},
 	"compilerOptions": {
 		"emitDecoratorMetadata": true
