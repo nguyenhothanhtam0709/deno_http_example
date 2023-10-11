@@ -2,8 +2,8 @@
   "version": "3",
   "remote": {
     "https://deno.land/std@0.203.0/dotenv/mod.ts": "1da8c6d0e7f7d8a5c2b19400b763bc11739df24acec235dda7ea2cfd3d300057",
-    "https://esm.sh/drizzle-orm@0.28.6/postgres-js": "218e472d549194e9f592f63a0a4186ade0628fe621a6bbc2466ab1c87cdf7929",
     "https://esm.sh/v133/drizzle-orm@0.28.6/denonext/postgres-js.js": "7f968d0769dea94a71faa306984cb0c800cf0584c159b50cc6caf7684f0f2aaf",
+    "https://esm.sh/v133/drizzle-orm@0.28.6/postgres-js": "218e472d549194e9f592f63a0a4186ade0628fe621a6bbc2466ab1c87cdf7929",
     "https://esm.sh/v133/inversify@6.0.1": "5e09930d7e06c332c83b84ec0fceb7c9cc78228a4e8aa2ffa834c89c922e24e3",
     "https://esm.sh/v133/inversify@6.0.1/denonext/inversify.mjs": "a92fe485c4c240d0c0c216d5bc333ff7b44c22f9521a243cd22f65d917d0540f",
     "https://esm.sh/v133/postgres@3.3.5": "d3a9649482c2e2b5da0982958aa28bd08ca1c4424bf9ba8428fe5f99aba4ebe7",
