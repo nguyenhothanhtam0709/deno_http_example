@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1697043179262,
+      "tag": "0000_outgoing_tattoo",
+      "breakpoints": true
+    }
+  ]
+}

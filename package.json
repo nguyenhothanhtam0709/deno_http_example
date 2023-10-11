@@ -1,0 +1,11 @@
+{
+	"scripts": {
+		"migrate:generate": "drizzle-kit generate:pg",
+		"migrate:up": "drizzle-kit up:pg"
+	},
+	"devDependencies": {
+		"dotenv": "^16.3.1",
+		"drizzle-kit": "^0.19.13",
+		"drizzle-orm": "^0.28.6"
+	}
+}
