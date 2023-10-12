@@ -5,6 +5,7 @@
 		"inversify": "https://esm.sh/v133/inversify@6.0.1",
 		"reflect-metadata": "https://esm.sh/v133/reflect-metadata@0.1.13",
 		"dotenv/": "https://deno.land/std@0.203.0/dotenv/",
-		"hono/": "https://deno.land/x/hono@v3.7.5/"
+		"hono/": "https://deno.land/x/hono@v3.7.5/",
+		"zod/": "https://deno.land/x/zod@v3.22.4/"
 	}
 }
