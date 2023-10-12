@@ -19,7 +19,8 @@ export class DatabaseService extends AbstractBaseService {
 		super();
 
 		const queryClient = postgres(this.configService.get('DATABASE_URL'));
-		this.client = drizzle(queryClient);
+		// deno-lint-ignore no-explicit-any
+		this.client = drizzle(queryClient as any);
 	}
 
 	public get db() {

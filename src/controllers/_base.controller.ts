@@ -1,4 +1,4 @@
-import { Hono } from 'hono/mod.ts';
+import { Hono } from 'hono';
 import { injectable } from 'inversify';
 
 type AbstractBaseControllerParams = {

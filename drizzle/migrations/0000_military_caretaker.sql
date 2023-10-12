@@ -3,5 +3,6 @@ CREATE TABLE IF NOT EXISTS "posts" (
 	"title" varchar(256) NOT NULL,
 	"content" text,
 	"created_at" timestamp (3) DEFAULT now(),
-	"updated_at" timestamp (3)
+	"updated_at" timestamp (3),
+	CONSTRAINT "posts_title_unique" UNIQUE("title")
 );

@@ -1,11 +1,14 @@
 {
 	"imports": {
-		"postgres": "https://esm.sh/v133/postgres@3.3.5",
+		"postgres": "npm:postgres@3.4.0",
+		"drizzle-orm": "https://esm.sh/v133/drizzle-orm@0.28.6",
 		"drizzle-orm/": "https://esm.sh/v133/drizzle-orm@0.28.6/",
 		"inversify": "https://esm.sh/v133/inversify@6.0.1",
 		"reflect-metadata": "https://esm.sh/v133/reflect-metadata@0.1.13",
 		"dotenv/": "https://deno.land/std@0.203.0/dotenv/",
-		"hono/": "https://deno.land/x/hono@v3.7.5/",
-		"zod/": "https://deno.land/x/zod@v3.22.4/"
+		"hono": "https://esm.sh/v133/hono@v3.7.5",
+		"hono/": "https://esm.sh/v133/hono@v3.7.5/",
+		"@hono/zod-validator": "https://esm.sh/v133/@hono/zod-validator@0.1.9",
+		"zod": "https://esm.sh/v133/zod@v3.22.4"
 	}
 }

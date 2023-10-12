@@ -7,7 +7,7 @@ import {
 
 import type { AbstractBaseController } from './controllers/_base.controller.ts';
 import { DIContainer } from './container/mod.ts';
-import { Hono } from 'hono/mod.ts';
+import { Hono } from 'hono';
 import { controllers } from './controllers/mod.ts';
 import { providers } from './services/mod.ts';
 

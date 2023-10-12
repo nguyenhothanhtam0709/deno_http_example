@@ -1,46 +1,60 @@
-import { inject, injectable } from "inversify";
-import { AbstractBaseController } from "./_base.controller.ts";
+import { inject, injectable } from 'inversify';
+import { AbstractBaseController } from './_base.controller.ts';
 import {
 	type DatabaseService,
 	DatabaseServiceToken,
-} from "../services/database.service.ts";
-import { Context, validator } from "hono/mod.ts";
-import { createPostSchema } from "../commons/schema/post.ts";
+} from '../services/database.service.ts';
+import { createPostSchema } from '../commons/schema/post.ts';
+import { zValidator } from '@hono/zod-validator';
+import { type PostgresJsDatabase } from 'drizzle-orm/postgres-js';
+import { postTable } from '../db/schema/post.ts';
+import { eq } from 'drizzle-orm';
 
-export const PostControllerToken = Symbol("PostController");
+export const PostControllerToken = Symbol('PostController');
 
 @injectable()
 export class PostController extends AbstractBaseController {
+	private readonly db: PostgresJsDatabase;
+
 	constructor(
 		@inject(DatabaseServiceToken)
 		private readonly databaseService: DatabaseService
 	) {
-		super({ path: "/posts" });
+		super({ path: '/posts' });
+
+		this.db = this.databaseService.db;
 	}
 
 	public mapRoute(): void {
-		this.route.post(
-			"/",
-			validator("json", async (value, c) => {
-				const parsed = await createPostSchema.safeParseAsync(value);
-				if (!parsed.success) {
-					return c.json({}, 404);
-				}
+		// create posts
+		this.route.post('/', zValidator('json', createPostSchema), async (c) => {
+			const body = c.req.valid('json');
+			await this.db.insert(postTable).values(body);
 
-				return parsed.data;
-			}),
-			(c) => {
-				const body = c.req.valid("json");
-				return c.json({ body });
+			c.status(201);
+			return c.json({});
+		});
+
+		// get posts
+		this.route.get('/', async (c) => {
+			const posts = await this.db.select().from(postTable);
+
+			return c.json({ posts });
+		});
+
+		// get posts/:id
+		this.route.get('/:id{[0-9]+}', async (c) => {
+			const id = parseInt(c.req.param().id);
+			const posts = await this.db
+				.select()
+				.from(postTable)
+				.where(eq(postTable.id, id))
+				.limit(1);
+			if (!posts.length) {
+				return c.notFound();
 			}
-			// this.create.bind(this)
-		);
-	}
 
-	// private async create(c: Context): Promise<Response> {
-	// 	const body = c.req.valid("form");
-	// 	return c.json({
-	// 		message: "created",
-	// 	});
-	// }
+			return c.json({ posts: posts[0] });
+		});
+	}
 }
