@@ -1,60 +1,64 @@
 import { inject, injectable } from 'inversify';
 import { AbstractBaseController } from './_base.controller.ts';
-import {
-	type DatabaseService,
-	DatabaseServiceToken,
-} from '../services/database.service.ts';
-import { createPostSchema } from '../commons/schema/post.ts';
+import { createPostSchema, updatePostSchema } from '../commons/schema/post.ts';
 import { zValidator } from '@hono/zod-validator';
-import { type PostgresJsDatabase } from 'drizzle-orm/postgres-js';
-import { postTable } from '../db/schema/post.ts';
-import { eq } from 'drizzle-orm';
+import {
+	type PostService,
+	PostServiceToken,
+} from '../services/post.service.ts';
 
 export const PostControllerToken = Symbol('PostController');
 
 @injectable()
 export class PostController extends AbstractBaseController {
-	private readonly db: PostgresJsDatabase;
-
 	constructor(
-		@inject(DatabaseServiceToken)
-		private readonly databaseService: DatabaseService
+		@inject(PostServiceToken)
+		private readonly postService: PostService
 	) {
 		super({ path: '/posts' });
-
-		this.db = this.databaseService.db;
 	}
 
 	public mapRoute(): void {
 		// create posts
 		this.route.post('/', zValidator('json', createPostSchema), async (c) => {
 			const body = c.req.valid('json');
-			await this.db.insert(postTable).values(body);
+			const result = await this.postService.createPost(body);
 
 			c.status(201);
-			return c.json({});
+			return c.json({ result });
 		});
 
 		// get posts
 		this.route.get('/', async (c) => {
-			const posts = await this.db.select().from(postTable);
-
+			const posts = await this.postService.getPosts();
 			return c.json({ posts });
 		});
 
 		// get posts/:id
 		this.route.get('/:id{[0-9]+}', async (c) => {
 			const id = parseInt(c.req.param().id);
-			const posts = await this.db
-				.select()
-				.from(postTable)
-				.where(eq(postTable.id, id))
-				.limit(1);
-			if (!posts.length) {
-				return c.notFound();
-			}
+			const post = await this.postService.getPost(id);
+			return c.json({ post });
+		});
 
-			return c.json({ posts: posts[0] });
+		// put posts/:id
+		this.route.put(
+			'/:id{[0-9]+}',
+			zValidator('json', updatePostSchema),
+			async (c) => {
+				const id = parseInt(c.req.param().id);
+				const body = c.req.valid('json');
+				// deno-lint-ignore no-explicit-any
+				const post = await this.postService.updatePost(id, body as any);
+				return c.json({ post });
+			}
+		);
+
+		// delete posts/:id
+		this.route.delete('/:id{[0-9]+}', async (c) => {
+			const id = parseInt(c.req.param().id);
+			await this.postService.deletePost(id);
+			return c.json({});
 		});
 	}
 }

@@ -10,6 +10,7 @@ import { DIContainer } from './container/mod.ts';
 import { Hono } from 'hono';
 import { controllers } from './controllers/mod.ts';
 import { providers } from './services/mod.ts';
+import { HTTPException } from 'hono/http-exception';
 
 export class HttpApplication {
 	private readonly di: DIContainer;
@@ -23,6 +24,13 @@ export class HttpApplication {
 		this.app = new Hono();
 
 		this.mapRoutes();
+
+		this.app.onError((err, c) => {
+			if (err instanceof HTTPException) {
+				return err.getResponse();
+			}
+			return c.newResponse('INTERNAL SERVER ERROR', 500);
+		});
 	}
 
 	public mapRoutes() {

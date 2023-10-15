@@ -11,3 +11,4 @@ export const postTable = pgTable('posts', {
 
 export type Post = typeof postTable.$inferSelect; // return type when queried
 export type NewPost = typeof postTable.$inferInsert; // insert type
+export type UpdatePost = Partial<Omit<typeof postTable.$inferInsert, 'id'>>;

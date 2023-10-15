@@ -17,7 +17,9 @@ export class DIContainer {
 	public readonly controllers: Array<ControllerProvider>;
 
 	constructor({ providers = [], controllers = [] }: DIContainerParams) {
-		this.container = new Container();
+		this.container = new Container({
+			skipBaseClassChecks: true,
+		});
 		this.providers = providers;
 		this.controllers = controllers;
 
